@@ -1,0 +1,77 @@
+<div class="dashboard" [ngClass]="selectedTheme=='light' ? 'dashboard-light' : 'dashboard-dark'">
+    <div class="dashboard-content">
+        <header class="dashboard-header">
+            <h1 class="margin-0 dashboard-title">Dashboard</h1>
+            <div class="flex">
+                <div class="theme-selector pad-r-16">
+                    <select class="select" id="themeSelect" (change)="onThemeChange($event)">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+                <div class="year-selector">
+                    <select class="select" id="yearSelect" [(ngModel)]="selectedYear" (change)="onYearChange($event)">
+                        <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+        <section class="year-section" *ngIf="data | async as dta">
+            <ng-container *ngIf="meta | async as mta">
+                <div>
+                    <div class="summary-flex" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">
+                        <div class="summary-card" *ngFor="let item of mta.summary.fields" [ngClass]="item.class"
+                            [ngStyle]="item.style">
+                            <img *ngIf="item.icon" [src]="'../../../assets/img/' + item.icon"
+                                alt="{{ item.label }} Icon" />
+                            <div>
+                                <span class="margin-0" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">{{ item.label }}</span>
+                                <h3 class="margin-0" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">{{ dta.summary[item.key] | number }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="grid">
+                <div class="panel bg-color-white" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">
+                    <h3>Course Progress Rate</h3>
+                    <apx-chart [series]="courseProgress.series" [chart]="courseProgress.chart"
+                        [xaxis]="courseProgress.xaxis" [dataLabels]="courseProgress.dataLabels"
+                        [legend]="courseProgress.legend" [colors]="courseProgress.colors"
+                    >
+                    </apx-chart>
+                </div>
+                <div class="panel bg-color-white" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">
+                    <h3>Pass Percentage</h3>
+                    <apx-chart [series]="passStats.series" [chart]="passStats.chart" [colors]="passStats.colors"
+                        [plotOptions]="passStats.plotOptions" [xaxis]="passStats.xaxis">
+                    </apx-chart>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="panel bg-color-white" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">
+                    <h3>Average Assessment Score</h3>
+                    <apx-chart [series]="assessmentCompletion.series" [chart]="assessmentCompletion.chart"
+                        [labels]="assessmentCompletion.labels">
+                    </apx-chart>
+                </div>
+
+                <div class="panel bg-color-white" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">
+                    <h3>Learners Grade Breakdown</h3>
+                    <apx-chart [series]="gradeBreakdown.series" [chart]="gradeBreakdown.chart" [labels]="gradeBreakdown.labels">
+                    </apx-chart>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="panel bg-color-white" [ngClass]="selectedTheme=='light' ? 'chart-light' : 'chart-dark'">
+                    <apx-chart [series]="districtRanking.series" [chart]="districtRanking.chart"
+                        [stroke]="districtRanking.stroke" [dataLabels]="districtRanking.dataLabels"
+                        [plotOptions]="districtRanking.plotOptions" [xaxis]="districtRanking.xaxis"
+                        [colors]="districtRanking.colors" [fill]="districtRanking.fill" [yaxis]="districtRanking.yaxis"
+                        [legend]="districtRanking.legend"></apx-chart>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

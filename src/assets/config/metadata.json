@@ -1,0 +1,85 @@
+{
+    "summary": {
+        "fields": [
+            {"key": "totalLearners", "label": "Total Learners", "class": "width-100"},
+            {"key": "male", "label": "Male", "class": "width-100 border-left-skyblue pad-l-16", "icon": "male.png"},
+            {"key": "female", "label": "Female", "class": "width-100 border-left-pink pad-l-16", "icon": "female.png"},
+            {"key": "others", "label": "Others", "class": "width-100 border-left-purple pad-l-16", "icon": "other.png"},
+            {"key": "activeLearners", "label": "Active Learners", "class": "width-100 font-green border-left-green pad-l-16"},
+            {"key": "engagedLearners", "label": "Engaged Learners", "class": "width-100 font-orange border-left-orange pad-l-16"}
+        ]
+    },
+    "courseProgress": {
+        "series": [
+            {"key": "below", "name": "Below", "color": "#FF4560", "group": "courseProgress"},
+            {"key": "average", "name": "Average", "color": "#008FFB", "group": "courseProgress"},
+            {"key": "good", "name": "Good", "color": "#00E396", "group": "courseProgress"}
+        ],
+        "chartType": "bar",
+        "height": 350,
+        "dataLabelEnabled": false,
+        "legendPosition": "top",
+        "legendAlign": "right",
+        "xAxisKey": "district",
+        "isArrObjSeries": true
+    },
+    "districtRanking": {
+        "series": [
+            {"key": "others", "name": "Others", "color": "#ba68c8", "group": "1"},
+            {"key": "female", "name": "Female", "color": "#f06292", "group": "1"},
+            {"key": "male", "name": "Male", "color": "#4fc3f7", "group": "1"},
+            {"key": "passed", "name": "Passed", "color": "#4db6ac", "group": "2"},
+            {"key": "assessmentCompleted", "name": "Assessment Completed", "color": "#ffb74d", "group": "3"}
+        ],
+        "chartType": "bar",
+        "height": 350,
+        "width": 1510,
+        "dataLabelEnabled": false,
+        "legendPosition": "top",
+        "legendAlign": "right",
+        "xAxisKey": "district",
+        "stacked": true,
+        "isArrObjSeries": true
+    },
+    "gradeBreakdown": {
+        "series": [],
+        "seriesKey": "percent",
+        "chartType": "pie",
+        "height": 300,
+        "width": 800,
+        "dataLabelEnabled": true,
+        "labelKey": "label",
+        "isArrObjSeries": false
+    },
+    "passStats": {
+        "dataFlds": [
+            {"key": "overallLearners", "label": "Overall Learners", "color": "#4fc3f7"},
+            {"key": "assessmentTaken", "label": "Assessment Taken", "color": "#aed581"},
+            {"key": "passed", "label": "Passed", "color": "#4db6ac"},
+            {"key": "failed", "label": "Failed", "color": "#e57373"}
+        ],
+        "series": [],
+        "seriesKey": "value",
+        "chartType": "bar",
+        "height": 300,
+        "dataLabelEnabled": true,
+        "xAxisKey": "label",
+        "isArrObjSeries": false,
+        "isPlotBarHorizontal": true
+    },
+    "assessmentCompletion": {
+        "dataFlds": [
+            {"key": "completedPercent", "label": "Completed Percent"},
+            {"key": "notCompletedPercent", "label": "Not Completed Percent"}
+        ],
+        "series": [],
+        "seriesKey": "value",
+        "chartType": "donut",
+        "height": 300,
+        "width": 600,
+        "dataLabelEnabled": true,
+        "labelKey": "label",
+        "isArrObjSeries": false,
+        "isPlotBarHorizontal": true
+    }
+}
